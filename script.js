@@ -18,11 +18,13 @@ form.addEventListener('submit', function(e){
 
    let password = document.getElementById("password");
    let passwordError = document.getElementById("password-error");
+   let passwordErrorImage = document.getElementById("password-error-img");
    
 
    if(firstName.value == ""){
      firstName.style.borderColor = "hsl(0, 100%, 74%)";
      firstNameError.innerHTML = "First name can not be empty";
+     firstNameErrorImage.style.display = "block";
    }else{
      firstName.style.borderColor = "green";
      firstNameError.innerHTML = "";
@@ -31,6 +33,7 @@ form.addEventListener('submit', function(e){
    if(lastName.value == ""){
       lastName.style.borderColor = "hsl(0, 100%, 74%)";
       lastNameError.innerHTML = "Last Name can not be empty";
+      lastNameErrorImage.style.display = "block";
       
    } else{
        lastName.style.borderColor = "green";
@@ -40,6 +43,7 @@ form.addEventListener('submit', function(e){
    if (email.value == "") {
        email.style.borderColor = "hsl(0, 100%, 74%)";
        emailError.innerHTML = "Look like this is not an email";
+       emailErrorImage.style.display = "block";
       
    } else{
        email.style.borderColor = "green";
@@ -49,6 +53,7 @@ form.addEventListener('submit', function(e){
    if (password.value == "" || password.value.length < 8) {
        password.style.borderColor = "hsl(0, 100%, 74%)";
        passwordError.innerHTML = "Password can not be empty";
+       passwordErrorImage.style.display = "block";
       
    } else{
        password.style.borderColor = "green";
