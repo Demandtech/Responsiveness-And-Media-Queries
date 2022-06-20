@@ -13,6 +13,7 @@ form.addEventListener('submit', function(e){
    let lastNameErrorImage = document.getElementById("lname-error-img");
    
    let email = document.getElementById("email");
+   var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
    let emailError = document.getElementById("email-error");
    let emailErrorImage = document.getElementById("email-error-img");
 
@@ -28,6 +29,7 @@ form.addEventListener('submit', function(e){
    }else{
      firstName.style.borderColor = "green";
      firstNameError.innerHTML = "";
+     firstNameErrorImage.style.display = "none";
    }
 
    if(lastName.value == ""){
@@ -38,19 +40,22 @@ form.addEventListener('submit', function(e){
    } else{
        lastName.style.borderColor = "green";
        lastNameError.innerHTML = "";
+       lastNameErrorImage.style.display = "none";
    }
 
-   if (email.value == "") {
-       email.style.borderColor = "hsl(0, 100%, 74%)";
-       emailError.innerHTML = "Look like this is not an email";
-       emailErrorImage.style.display = "block";
+   if (pattern.test(email.value)) {
+       email.style.borderColor = "green";
+       errorImage.style.display = "none";
+       text.innerHTML = "";
+       return true;
       
    } else{
-       email.style.borderColor = "green";
-       emailError.innerHTML = "";
+      email.style.borderColor = "hsl(0, 100%, 74%)";
+      emailError.innerHTML = "Look like this is not an email";
+      emailErrorImage.style.display = "block";
    }
 
-   if (password.value == "" || password.value.length < 8) {
+   if (password.value == "") {
        password.style.borderColor = "hsl(0, 100%, 74%)";
        passwordError.innerHTML = "Password can not be empty";
        passwordErrorImage.style.display = "block";
@@ -58,6 +63,7 @@ form.addEventListener('submit', function(e){
    } else{
        password.style.borderColor = "green";
        passwordError.innerHTML = "";
+       passwordErrorImage.style.display = "block";
    } 
        
    
