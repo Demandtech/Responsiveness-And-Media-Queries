@@ -27,10 +27,12 @@ form.addEventListener('submit', function(e){
      firstNameError.innerHTML = "First name can not be empty";
      firstNameErrorImage.style.display = "block";
    }else{
-     firstName.style.borderColor = "green";
      firstNameError.innerHTML = "";
      firstNameErrorImage.style.display = "none";
+     firstName.style.borderColor = "";
+     
    }
+
 
    if(lastName.value == ""){
       lastName.style.borderColor = "hsl(0, 100%, 74%)";
@@ -38,32 +40,36 @@ form.addEventListener('submit', function(e){
       lastNameErrorImage.style.display = "block";
       
    } else{
-       lastName.style.borderColor = "green";
        lastNameError.innerHTML = "";
        lastNameErrorImage.style.display = "none";
+       lastName.style.borderColor = "";
+       
    }
 
    if (pattern.test(email.value)) {
-       email.style.borderColor = "green";
-       errorImage.style.display = "none";
-       text.innerHTML = "";
-       return true;
+       emailErrorImage.style.display = "none"
+       emailError.innerHTML = "";
+       email.style.borderColor = "" ;
       
    } else{
       email.style.borderColor = "hsl(0, 100%, 74%)";
       emailError.innerHTML = "Look like this is not an email";
       emailErrorImage.style.display = "block";
+      
    }
 
-   if (password.value == "") {
+    if (password.value == "") {
        password.style.borderColor = "hsl(0, 100%, 74%)";
        passwordError.innerHTML = "Password can not be empty";
        passwordErrorImage.style.display = "block";
       
-   } else{
-       password.style.borderColor = "green";
+   } else if (password.value.length < 8){
+      passwordError.innerHTML = "Password can not be less than 8";
+   }
+    else{
+       password.style.borderColor = "";
        passwordError.innerHTML = "";
-       passwordErrorImage.style.display = "block";
+       passwordErrorImage.style.display = "none";
    } 
        
    
